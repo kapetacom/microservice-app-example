@@ -1,0 +1,18 @@
+kind: kapeta://kapeta/block-type-service:0.0.2
+metadata:
+  name: kapeta/ms-app-example-log-message-processor
+  visibility: private
+  description: ""
+spec:
+  consumers:
+    - kind: kapeta/resource-type-redis:0.0.1
+      metadata:
+        name: tasks
+      spec:
+        port:
+          type: redis
+  providers: []
+  entities:
+    types: []
+  target:
+    kind: kapeta://kapeta/language-target-docker:0.1.0

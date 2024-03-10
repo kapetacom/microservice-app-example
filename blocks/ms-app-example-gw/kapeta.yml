@@ -1,0 +1,22 @@
+kind: kapeta/block-type-gateway-http:0.3.0
+metadata:
+  name: kapeta/ms-app-example-gw
+  visibility: private
+  title: Microservice Example Gateway
+spec:
+  entities:
+    types: []
+    source:
+      type: kaplang
+      version: 1.11.2
+      value: ""
+  providers: []
+  consumers:
+    - kind: kapeta/resource-type-web-fragment:0.0.2
+      metadata:
+        name: main
+      spec:
+        port:
+          name: http
+          type: web
+        path: /

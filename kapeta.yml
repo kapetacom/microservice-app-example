@@ -1,0 +1,103 @@
+kind: core/plan
+metadata:
+  name: kapeta/microservice-app-example
+  visibility: private
+  description: See https://github.com/elgris/microservice-app-example for more information
+  structure: mono
+  title: Microservice Example by Elgris
+spec:
+  blocks:
+    - name: users-api
+      id: 4a4d611a-9e24-406a-99e3-02d80bd3c5ce
+      block:
+        ref: kapeta://kapeta/ms-app-example-users-api:local
+      dimensions:
+        top: 217.32601791147545
+        left: 302.1440114151335
+        width: 0
+        height: 0
+    - name: todos-api
+      id: d8cfb135-3d3c-4f24-8e3a-4e039fe8d003
+      block:
+        ref: kapeta://kapeta/ms-app-example-todos-api:local
+      dimensions:
+        top: 297.88176375604246
+        left: 701.5282131612403
+        width: 0
+        height: 0
+    - name: log-processor
+      id: 30145d32-5019-4a2b-8ac5-784008905032
+      block:
+        ref: kapeta://kapeta/ms-app-example-log-message-processor:local
+      dimensions:
+        top: 503.6205002440396
+        left: 706.6610171527492
+        width: 0
+        height: 0
+    - name: auth-api
+      id: b1c3e887-697d-49c3-b2f7-c4a5d74fee0b
+      block:
+        ref: kapeta://kapeta/ms-app-example-auth-api:local
+      dimensions:
+        top: 88.61645550617406
+        left: 607.9061598128837
+        width: 0
+        height: 0
+    - name: Frontend
+      id: 06616ef0-1c50-425d-8f97-42b08de9fe03
+      block:
+        ref: kapeta://kapeta/ms-app-example-frontend:local
+      dimensions:
+        top: 185.8516805176869
+        left: 1149.378527890506
+        width: 0
+        height: 0
+    - block:
+        ref: kapeta://kapeta/ms-app-example-gw:local
+      dimensions:
+        height: -1
+        width: 150
+        left: 1350.4864956089366
+        top: 521.4757065711101
+      id: 68adf213-f0f9-48dd-b8ae-679dad76a757
+      name: Gateway
+  connections:
+    - provider:
+        resourceName: users
+        blockId: 4a4d611a-9e24-406a-99e3-02d80bd3c5ce
+      consumer:
+        resourceName: users
+        blockId: b1c3e887-697d-49c3-b2f7-c4a5d74fee0b
+      port:
+        name: rest
+        type: rest
+      mapping: {}
+    - provider:
+        resourceName: auth
+        blockId: b1c3e887-697d-49c3-b2f7-c4a5d74fee0b
+      consumer:
+        resourceName: auth
+        blockId: 06616ef0-1c50-425d-8f97-42b08de9fe03
+      port:
+        name: rest
+        type: rest
+      mapping: {}
+    - provider:
+        resourceName: todo
+        blockId: d8cfb135-3d3c-4f24-8e3a-4e039fe8d003
+      consumer:
+        resourceName: todo
+        blockId: 06616ef0-1c50-425d-8f97-42b08de9fe03
+      port:
+        name: rest
+        type: rest
+      mapping: {}
+    - provider:
+        resourceName: main
+        blockId: 06616ef0-1c50-425d-8f97-42b08de9fe03
+      consumer:
+        resourceName: main
+        blockId: 68adf213-f0f9-48dd-b8ae-679dad76a757
+      port:
+        name: http
+        type: web
