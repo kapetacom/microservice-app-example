@@ -1,0 +1,35 @@
+name: Staging
+on:
+  push:
+    branches:
+      - master
+jobs:
+  staging:
+    name: Staging
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'write'
+      pull-requests: 'write'
+    steps:
+      - uses: actions/checkout@v3
+        id: checkout
+        with:
+          fetch-depth: 0
+
+      - name: Publish to Staging
+        id: kapeta-registry-push
+        uses: kapetacom/core-registry-action@v4.1
+        with:
+          credentials: ${{ secrets.KAPETA_TOKEN_STAGING }}
+          staging: true
+          base_url: ${{ secrets.KAPETA_STAGING_URL }}
+          action: publish
+          working_directory: ./staging/kapeta/sample-artifacts
+
+      - name: slack - GitHub Actions Slack integration
+        uses: act10ns/slack@v2.0.0
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          status: ${{ job.status }}
+          steps: ${{ toJson(steps) }}
+          channel: '#github-actions'
