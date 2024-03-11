@@ -24,7 +24,6 @@ jobs:
           staging: true
           base_url: ${{ secrets.KAPETA_STAGING_URL }}
           action: publish
-          working_directory: ./staging/kapeta/sample-artifacts
 
       - name: slack - GitHub Actions Slack integration
         uses: act10ns/slack@v2.0.0
