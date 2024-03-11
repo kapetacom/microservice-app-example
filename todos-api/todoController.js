@@ -51,6 +51,14 @@ class TodoController {
     }
 
     _logOperation (opName, username, todoId) {
+        if (!this._tracer) {
+            this._redisClient.publish(this._logChannel, JSON.stringify({
+                opName: opName,
+                username: username,
+                todoId: todoId,
+            }))
+            return;
+        }
         this._tracer.scoped(() => {
             const traceId = this._tracer.id;
             this._redisClient.publish(this._logChannel, JSON.stringify({

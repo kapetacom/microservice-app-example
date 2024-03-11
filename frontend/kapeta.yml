@@ -1,0 +1,40 @@
+kind: kapeta://kapeta/block-type-service:0.0.2
+metadata:
+  name: kapeta/ms-app-example-frontend
+  visibility: private
+  description: ""
+spec:
+  consumers:
+    - kind: kapeta/resource-type-rest-client:0.1.4
+      metadata:
+        name: auth
+      spec:
+        port:
+          name: rest
+          type: rest
+        methods: {}
+    - kind: kapeta/resource-type-rest-client:0.1.4
+      metadata:
+        name: todo
+      spec:
+        port:
+          name: rest
+          type: rest
+        methods: {}
+  providers:
+    - kind: kapeta/resource-type-web-page:0.0.2
+      metadata:
+        name: main
+      spec:
+        port:
+          name: http
+          type: web
+        path: /
+  entities:
+    types: []
+    source:
+      type: kaplang
+      version: 1.11.2
+      value: ""
+  target:
+    kind: kapeta://kapeta/language-target-docker:0.1.0

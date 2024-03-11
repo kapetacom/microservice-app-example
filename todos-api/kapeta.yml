@@ -1,0 +1,43 @@
+kind: kapeta://kapeta/block-type-service:0.0.2
+metadata:
+  name: kapeta/ms-app-example-todos-api
+  visibility: private
+  description: ""
+spec:
+  consumers:
+    - kind: kapeta/resource-type-redis:0.0.1
+      metadata:
+        name: tasks
+      spec:
+        port:
+          type: redis
+  providers:
+    - kind: kapeta/resource-type-rest-api:0.1.4
+      metadata:
+        name: todo
+      spec:
+        port:
+          name: rest
+          type: rest
+  entities:
+    types: []
+  target:
+    kind: kapeta://kapeta/language-target-docker:0.1.0
+  configuration:
+    types:
+      - type: dto
+        name: JWT
+        properties:
+          secret:
+            type: string
+            secret: true
+            required: true
+            global: false
+    source:
+      type: kaplang
+      version: 1.11.2
+      value: |-
+        JWT {
+            @secret
+            secret:string
+        }
