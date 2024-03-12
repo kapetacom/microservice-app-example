@@ -34,6 +34,9 @@ const redisOptions = {
 };
 
 const redisClient = require("redis").createClient(redisOptions);
+
+console.log('Connecting to redis at ' + redisOptions.host + ':' + redisOptions.port)
+
 const port = process.env.TODO_API_PORT || 8082
 const jwtSecret = process.env.JWT_SECRET || "foo"
 
