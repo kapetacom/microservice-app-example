@@ -1,4 +1,4 @@
-kind: kapeta://kapeta/block-type-service:0.0.2
+kind: kapeta://kapeta/block-type-service:1.3.6
 metadata:
   name: kapeta/ms-app-example-todos-api
   visibility: private
@@ -12,7 +12,7 @@ spec:
         port:
           type: redis
   providers:
-    - kind: kapeta/resource-type-rest-api:0.1.4
+    - kind: kapeta://kapeta/resource-type-rest-api:1.1.2
       metadata:
         name: todo
       spec:
@@ -22,7 +22,7 @@ spec:
   entities:
     types: []
   target:
-    kind: kapeta://kapeta/language-target-docker:0.1.0
+    kind: kapeta://kapeta/language-target-docker:0.0.1
   configuration:
     types:
       - type: dto
