@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: kapeta/ms-app-example-users-api
+  jpa:
+    defer-datasource-initialization: true # Needed for H2 data.sql to work

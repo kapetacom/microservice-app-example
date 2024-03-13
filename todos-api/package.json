@@ -1,26 +1,44 @@
 {
-  "name": "todos-api",
-  "version": "1.0.0",
-  "description": "API for Todos in my little example app",
-  "main": "index.js",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
-  },
-  "author": "elgris <iddqd07@yandex.ru>",
-  "license": "MIT",
-  "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.15.4",
-    "express-jwt": "^5.3.0",
-    "memory-cache": "^0.2.0",
-    "redis": "^2.8.0",
-    "zipkin": "^0.11.2",
-    "zipkin-context-cls": "^0.11.0",
-    "zipkin-instrumentation-express": "^0.11.2",
-    "zipkin-transport-http": "^0.11.2"
-  },
-  "devDependencies": {
-    "nodemon": "^1.11.0"
-  }
+    "name": "@kapeta/ms-app-example-todos-api",
+    "version": "0.0.1",
+    "type": "commonjs",
+    "scripts": {
+        "start:dev": "NODE_ENV=development npm run migrate:generate --if-present && npm run migrate --if-present && nodemon --ext ts,tsx,js,json,yaml,yml --watch '**/*' index.ts",
+        "start:dev:docker": "NODE_ENV=development npm run migrate:generate --if-present && npm run migrate --if-present && nodemon --exitcrash --ext ts,tsx,js,json,yaml,yml --watch '**/*' index.ts",
+        "start": "NODE_ENV=production npm run migrate --if-present && ts-node --transpile-only index.ts",
+        "migrate:dev": "npm-run-pattern migrate:dev:",
+        "migrate:generate": "npm-run-pattern migrate:generate:",
+        "migrate": "npm-run-pattern migrate:db:",
+        "format": "prettier --write .",
+        "build": "npm run migrate:generate",
+        "lint": "tsc --noEmit && eslint src/**/*.ts"
+    },
+    "prettier": "@kapeta/prettier-config",
+    "devDependencies": {
+        "@kapeta/eslint-config": "^0.7.0",
+        "@kapeta/prettier-config": "^0.6.2",
+        "@types/memory-cache": "^0.2.5",
+        "cross-env": "^7.0.3",
+        "eslint": "^8.42.0",
+        "eslint-config-prettier": "^8.8.0",
+        "nodemon": "^2.0.22",
+        "prettier": "^2.8.8"
+    },
+    "dependencies": {
+        "@kapeta/sdk-auth-jwt": "^2.1",
+        "@kapeta/sdk-config": "^2",
+        "@kapeta/sdk-redis": "^1.1.1",
+        "@kapeta/sdk-rest": "^1.0.1",
+        "@kapeta/sdk-rest-route": "^2.1",
+        "@kapeta/sdk-server": "^3.2",
+        "@types/express": "^4",
+        "@types/node": "^20",
+        "express": "^4",
+        "memory-cache": "^0.2.0",
+        "npm-run-pattern": "^1.1.2",
+        "redis": "^4",
+        "ts-node": "^10.9.1",
+        "tsconfig-paths": "^4.2.0",
+        "typescript": "^5.3.2"
+    }
 }

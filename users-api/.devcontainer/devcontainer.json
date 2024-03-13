@@ -1,0 +1,20 @@
+{
+    "name": "kapeta-ms-app-example-users-api",
+    "image": "mcr.microsoft.com/devcontainers/java:21",
+    "containerEnv": {
+        "KAPETA_LOCAL_SERVER": "0.0.0.0",
+        "KAPETA_LOCAL_CLUSTER_HOST": "host.docker.internal",
+        "KAPETA_ENVIRONMENT_TYPE": "docker",
+        "KAPETA_BLOCK_REF": "kapeta/ms-app-example-users-api:local",
+        "KAPETA_LOCAL_SERVER_PORT_REST": "80"
+    },
+    "features": {
+         "ghcr.io/devcontainers/features/java:1": {
+            "version": "none",
+            "installGradle": "true",
+            "installMaven": "true"
+        }
+    },
+    "forwardPorts": [80],
+    "postCreateCommand": "mvn compile"
+}

@@ -21,8 +21,8 @@ spec:
       block:
         ref: kapeta://kapeta/ms-app-example-todos-api:local
       dimensions:
-        top: 297.88176375604246
-        left: 701.5282131612403
+        top: 375.44448933664614
+        left: 753.2366968816427
         width: 0
         height: 0
     - name: log-processor
@@ -30,8 +30,8 @@ spec:
       block:
         ref: kapeta://kapeta/ms-app-example-log-message-processor:local
       dimensions:
-        top: 503.6205002440396
-        left: 706.6610171527492
+        top: 586.6262241110014
+        left: 743.4012555856666
         width: 0
         height: 0
     - name: auth-api
@@ -39,8 +39,8 @@ spec:
       block:
         ref: kapeta://kapeta/ms-app-example-auth-api:local
       dimensions:
-        top: 88.61645550617406
-        left: 607.9061598128837
+        top: 66.84446236074147
+        left: 788.8858528342922
         width: 0
         height: 0
     - name: Frontend
@@ -48,8 +48,8 @@ spec:
       block:
         ref: kapeta://kapeta/ms-app-example-frontend:local
       dimensions:
-        top: 185.8516805176869
-        left: 1149.378527890506
+        top: 200.81992580517183
+        left: 1192.922514181371
         width: 0
         height: 0
     - block:
@@ -57,22 +57,12 @@ spec:
       dimensions:
         height: -1
         width: 150
-        left: 1350.4864956089366
-        top: 521.4757065711101
+        left: 1248.4302777397213
+        top: 479.2924698518344
       id: 68adf213-f0f9-48dd-b8ae-679dad76a757
       name: Gateway
   connections:
     - provider:
-        resourceName: users
-        blockId: 4a4d611a-9e24-406a-99e3-02d80bd3c5ce
-      consumer:
-        resourceName: users
-        blockId: b1c3e887-697d-49c3-b2f7-c4a5d74fee0b
-      port:
-        name: rest
-        type: rest
-      mapping: {}
-    - provider:
         resourceName: auth
         blockId: b1c3e887-697d-49c3-b2f7-c4a5d74fee0b
       consumer:
@@ -81,17 +71,14 @@ spec:
       port:
         name: rest
         type: rest
-      mapping: {}
-    - provider:
-        resourceName: todo
-        blockId: d8cfb135-3d3c-4f24-8e3a-4e039fe8d003
-      consumer:
-        resourceName: todo
-        blockId: 06616ef0-1c50-425d-8f97-42b08de9fe03
-      port:
-        name: rest
-        type: rest
-      mapping: {}
+      mapping:
+        getVersion:
+          targetId: getVersion
+          type: EXACT
+        login:
+          targetId: login
+          type: EXACT
+      id: b1c3e887-697d-49c3-b2f7-c4a5d74fee0b__auth__PROVIDES-06616ef0-1c50-425d-8f97-42b08de9fe03__auth__CONSUMES
     - provider:
         resourceName: main
         blockId: 06616ef0-1c50-425d-8f97-42b08de9fe03
@@ -101,3 +88,62 @@ spec:
       port:
         name: http
         type: web
+    - provider:
+        resourceName: users
+        blockId: 4a4d611a-9e24-406a-99e3-02d80bd3c5ce
+      consumer:
+        resourceName: users
+        blockId: b1c3e887-697d-49c3-b2f7-c4a5d74fee0b
+      port:
+        name: rest
+        type: rest
+      mapping:
+        Users::getUsers:
+          targetId: Users::getUsers
+          type: EXACT
+        Users::getUser:
+          targetId: Users::getUser
+          type: EXACT
+        Users::login:
+          targetId: Users::login
+          type: EXACT
+      id: 4a4d611a-9e24-406a-99e3-02d80bd3c5ce__users__PROVIDES-b1c3e887-697d-49c3-b2f7-c4a5d74fee0b__users__CONSUMES
+      consumerClusterId: b1c3e887-697d-49c3-b2f7-c4a5d74fee0b__authjwtconsumer__CONSUMES|b1c3e887-697d-49c3-b2f7-c4a5d74fee0b__users__CONSUMES
+      providerClusterId: 4a4d611a-9e24-406a-99e3-02d80bd3c5ce__authjwtprovider__PROVIDES|4a4d611a-9e24-406a-99e3-02d80bd3c5ce__users__PROVIDES
+    - provider:
+        resourceName: authjwtprovider
+        blockId: 4a4d611a-9e24-406a-99e3-02d80bd3c5ce
+      consumer:
+        resourceName: authjwtconsumer
+        blockId: b1c3e887-697d-49c3-b2f7-c4a5d74fee0b
+      port:
+        name: http
+        type: http
+    - provider:
+        resourceName: authjwtprovider
+        blockId: 4a4d611a-9e24-406a-99e3-02d80bd3c5ce
+      consumer:
+        resourceName: authjwtconsumer
+        blockId: d8cfb135-3d3c-4f24-8e3a-4e039fe8d003
+      port:
+        name: http
+        type: http
+    - provider:
+        resourceName: todo
+        blockId: d8cfb135-3d3c-4f24-8e3a-4e039fe8d003
+      consumer:
+        resourceName: todo
+        blockId: 06616ef0-1c50-425d-8f97-42b08de9fe03
+      port:
+        name: rest
+        type: rest
+      mapping:
+        list:
+          targetId: list
+          type: EXACT
+        create:
+          targetId: create
+          type: EXACT
+        delete:
+          targetId: delete
+          type: EXACT

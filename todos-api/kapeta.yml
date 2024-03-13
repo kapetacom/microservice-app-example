@@ -1,28 +1,115 @@
-kind: kapeta://kapeta/block-type-service:0.0.2
+kind: kapeta://kapeta/block-type-service:1.3.6
 metadata:
   name: kapeta/ms-app-example-todos-api
   visibility: private
   description: ""
 spec:
   consumers:
-    - kind: kapeta/resource-type-redis:0.0.1
+    - kind: kapeta/resource-type-redis:0.0.2
       metadata:
         name: tasks
       spec:
         port:
           type: redis
+    - kind: kapeta/resource-type-auth-jwt-consumer:0.0.4
+      metadata:
+        name: authjwtconsumer
+      spec:
+        port:
+          name: http
+          type: http
   providers:
-    - kind: kapeta/resource-type-rest-api:0.1.4
+    - kind: kapeta://kapeta/resource-type-rest-api:1.1.2
       metadata:
         name: todo
       spec:
         port:
           name: rest
           type: rest
+        methods:
+          delete:
+            responseType:
+              type: void
+            method: DELETE
+            path: /todos/{taskId}
+            arguments:
+              taskId:
+                type: string
+                transport: PATH
+                argument: taskId
+                optional: false
+          create:
+            responseType:
+              ref: Task
+            method: POST
+            path: /todos
+            arguments:
+              task:
+                ref: Task
+                transport: BODY
+                argument: task
+                optional: false
+          list:
+            responseType:
+              ref: Map<string,Task>
+            method: GET
+            path: /todos
+            arguments: {}
+        source:
+          type: kaplang
+          version: 1.11.2
+          value: |-
+            @GET('/todos')
+            list(  ):Map<string, Task>
+
+            @POST('/todos')
+            create( @Body task:Task ):Task
+
+            @DELETE('/todos/{taskId}')
+            delete( @Path taskId:string  ):void
   entities:
-    types: []
+    types:
+      - type: dto
+        name: Task
+        properties:
+          id:
+            type: integer
+            secret: false
+            required: true
+            global: false
+          content:
+            type: string
+            secret: false
+            required: true
+            global: false
+      - type: dto
+        name: TaskResult
+        properties:
+          items:
+            ref: Map<string,Task>
+            secret: false
+            required: true
+            global: false
+          lastInsertedID:
+            type: integer
+            secret: false
+            required: true
+            global: false
+    source:
+      type: kaplang
+      version: 1.11.3
+      value: |-
+        type Task {
+            id:integer
+            content:string
+        }
+
+        type TaskResult {
+            items: Map<string, Task>
+            lastInsertedID:integer
+        }
   target:
-    kind: kapeta://kapeta/language-target-docker:0.1.0
+    kind: kapeta://kapeta/language-target-nodejs:3.3.0
   configuration:
     types:
       - type: dto
@@ -33,11 +120,24 @@ spec:
             secret: true
             required: true
             global: false
+      - type: dto
+        name: LogQueue
+        properties:
+          channel:
+            type: string
+            defaultValue: "'log_channel'"
+            secret: false
+            required: true
+            global: false
     source:
       type: kaplang
-      version: 1.11.2
+      version: 1.11.3
       value: |-
-        JWT {
+        type JWT {
             @secret
             secret:string
+        }
+
+        type LogQueue {
+            channel:string = 'log_channel'
         }

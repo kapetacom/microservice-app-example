@@ -1,28 +1,94 @@
-kind: kapeta://kapeta/block-type-service:0.0.2
+kind: kapeta://kapeta/block-type-service:1.3.6
 metadata:
   name: kapeta/ms-app-example-frontend
   visibility: private
   description: ""
 spec:
   consumers:
-    - kind: kapeta/resource-type-rest-client:0.1.4
+    - kind: kapeta://kapeta/resource-type-rest-client:1.1.2
       metadata:
         name: auth
       spec:
         port:
           name: rest
           type: rest
-        methods: {}
-    - kind: kapeta/resource-type-rest-client:0.1.4
+        methods:
+          login:
+            responseType:
+              ref: LoginResponse
+            method: POST
+            path: /login
+            arguments:
+              request:
+                ref: LoginRequest
+                transport: BODY
+                argument: request
+                optional: false
+          getVersion:
+            responseType:
+              type: string
+            method: GET
+            path: /version
+            arguments: {}
+        source:
+          type: kaplang
+          version: 1.11.2
+          value: |-
+            @GET("/version")
+            getVersion():string
+
+            @POST("/login")
+            login(@Body request:LoginRequest):LoginResponse
+    - kind: kapeta/resource-type-rest-client:1.1.2
       metadata:
         name: todo
       spec:
         port:
           name: rest
           type: rest
-        methods: {}
+        methods:
+          delete:
+            responseType:
+              type: void
+            method: DELETE
+            path: /todos/{taskId}
+            arguments:
+              taskId:
+                type: string
+                transport: PATH
+                argument: taskId
+                optional: false
+          create:
+            responseType:
+              ref: Task
+            method: POST
+            path: /todos
+            arguments:
+              task:
+                ref: Task
+                transport: BODY
+                argument: task
+                optional: false
+          list:
+            responseType:
+              ref: Map<string,Task>
+            method: GET
+            path: /todos
+            arguments: {}
+        source:
+          type: kaplang
+          version: 1.11.2
+          value: |-
+            @GET('/todos')
+            list(  ):Map<string, Task>
+
+            @POST('/todos')
+            create( @Body task:Task ):Task
+
+            @DELETE('/todos/{taskId}')
+            delete( @Path taskId:string  ):void
   providers:
-    - kind: kapeta/resource-type-web-page:0.0.2
+    - kind: kapeta://kapeta/resource-type-web-page:0.0.13
       metadata:
         name: main
       spec:
@@ -31,10 +97,59 @@ spec:
           type: web
         path: /
   entities:
-    types: []
+    types:
+      - type: dto
+        name: Task
+        properties:
+          id:
+            type: integer
+            secret: false
+            required: true
+            global: false
+          content:
+            type: string
+            secret: false
+            required: true
+            global: false
+      - type: dto
+        name: LoginResponse
+        properties:
+          accessToken:
+            type: string
+            secret: false
+            required: true
+            global: false
+      - type: dto
+        name: LoginRequest
+        properties:
+          username:
+            type: string
+            secret: false
+            required: true
+            global: false
+          password:
+            type: string
+            secret: false
+            required: true
+            global: false
     source:
       type: kaplang
       version: 1.11.2
-      value: ""
+      value: |-
+        type Task {
+        	id: integer
+        	content: string
+        }
+
+
+        type LoginResponse {
+        	accessToken: string
+        }
+
+
+        type LoginRequest {
+        	username: string
+        	password: string
+        }
   target:
-    kind: kapeta://kapeta/language-target-docker:0.1.0
+    kind: kapeta://kapeta/language-target-docker:0.0.1

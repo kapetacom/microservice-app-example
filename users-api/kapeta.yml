@@ -1,4 +1,4 @@
-kind: kapeta://kapeta/block-type-service:0.0.2
+kind: kapeta://kapeta/block-type-service:1.3.6
 metadata:
   name: kapeta/ms-app-example-users-api
   visibility: private
@@ -6,17 +6,289 @@ metadata:
 spec:
   consumers: []
   providers:
-    - kind: kapeta/resource-type-rest-api:0.1.4
+    - kind: kapeta://kapeta/resource-type-rest-api:1.1.2
       metadata:
         name: users
       spec:
         port:
           name: rest
           type: rest
+        methods:
+          Users::login:
+            responseType:
+              ref: LoginResponse
+            method: POST
+            path: /users/login
+            arguments:
+              request:
+                ref: LoginRequest
+                transport: BODY
+                argument: request
+                optional: false
+            controllerName: Users
+          Users::getUser:
+            responseType:
+              ref: User
+            method: GET
+            path: /users/{username}
+            arguments:
+              username:
+                type: string
+                transport: PATH
+                argument: username
+                optional: false
+            controllerName: Users
+          Users::getUsers:
+            responseType:
+              ref: User[]
+            method: GET
+            path: /users/
+            arguments: {}
+            controllerName: Users
+        source:
+          type: kaplang
+          version: 1.11.2
+          value: |-
+            controller Users('/users') {
+
+                @GET("/")
+                getUsers():User[]
+
+                @GET("/{username}")
+                getUser(@Path username:string):User
+
+                @POST('/login')
+                login( @Body request:LoginRequest ):LoginResponse
+            }
+    - kind: kapeta/resource-type-auth-jwt-provider:1.0.2
+      metadata:
+        name: authjwtprovider
+      spec:
+        port:
+          name: http
+          type: http
   entities:
-    types: []
+    types:
+      - type: enum
+        name: UserRole
+        values:
+          - USER
+          - ADMIN
+      - type: dto
+        name: User
+        properties:
+          username:
+            type: string
+            secret: false
+            required: true
+            global: false
+          firstname:
+            type: string
+            secret: false
+            required: true
+            global: false
+          lastname:
+            type: string
+            secret: false
+            required: true
+            global: false
+          role:
+            ref: UserRole
+            secret: false
+            required: true
+            global: false
+      - type: dto
+        name: LoginRequest
+        properties:
+          username:
+            type: string
+            secret: false
+            required: true
+            global: false
+          password:
+            type: string
+            secret: false
+            required: true
+            global: false
+      - type: dto
+        name: LoginResponse
+        properties:
+          accessToken:
+            type: string
+            secret: false
+            required: true
+            global: false
+      - type: enum
+        name: SortOrderDirection
+        values:
+          - ASC
+          - DESC
+      - type: dto
+        name: SortOrder
+        properties:
+          direction:
+            ref: SortOrderDirection
+            secret: false
+            required: true
+            global: false
+          property:
+            type: string
+            secret: false
+            required: true
+            global: false
+      - type: dto
+        name: Sort
+        properties:
+          orders:
+            ref: SortOrder[]
+            secret: false
+            required: true
+            global: false
+      - type: dto
+        name: Pageable
+        properties:
+          page:
+            type: long
+            secret: false
+            required: false
+            global: false
+          size:
+            type: long
+            secret: false
+            required: false
+            global: false
+          sort:
+            ref: SortOrder[]
+            secret: false
+            required: false
+            global: false
+      - type: dto
+        name: Slice<T>
+        properties:
+          content:
+            ref: T[]
+            secret: false
+            required: true
+            global: false
+          last:
+            type: boolean
+            secret: false
+            required: true
+            global: false
+          first:
+            type: boolean
+            secret: false
+            required: true
+            global: false
+          pageable:
+            ref: Pageable
+            secret: false
+            required: true
+            global: false
+      - type: dto
+        name: Page<T>
+        properties:
+          totalPages:
+            type: long
+            secret: false
+            required: true
+            global: false
+          totalElements:
+            type: long
+            secret: false
+            required: true
+            global: false
+          content:
+            ref: T[]
+            secret: false
+            required: true
+            global: false
+          last:
+            type: boolean
+            secret: false
+            required: true
+            global: false
+          first:
+            type: boolean
+            secret: false
+            required: true
+            global: false
+          pageable:
+            ref: Pageable
+            secret: false
+            required: true
+            global: false
+    source:
+      type: kaplang
+      version: 1.11.2
+      value: |-
+        enum UserRole {
+        	USER,
+        	ADMIN
+        }
+
+
+        type User {
+        	username: string
+        	firstname: string
+        	lastname: string
+        	role: UserRole
+        }
+
+
+        type LoginRequest {
+        	username: string
+        	password: string
+        }
+
+
+        type LoginResponse {
+        	accessToken: string
+        }
+
+        @Native("org.springframework.data.domain.Sort.Direction")
+        enum SortOrderDirection {
+        	ASC,
+        	DESC
+        }
+
+        @Native("org.springframework.data.domain.Sort.Order")
+        type SortOrder {
+        	direction: SortOrderDirection
+        	property: string
+        }
+
+        @Native("org.springframework.data.domain.Sort")
+        type Sort {
+        	orders: SortOrder[]
+        }
+
+        @Native("org.springframework.data.domain.Pageable")
+        type Pageable {
+        	page?: long
+        	size?: long
+        	sort?: SortOrder[]
+        }
+
+        @Native("org.springframework.data.domain.Slice")
+        type Slice<T> {
+        	content: T[]
+        	last: boolean
+        	first: boolean
+        	pageable: Pageable
+        }
+
+        @Native("org.springframework.data.domain.Page")
+        type Page<T> extends Slice<T> {
+        	totalPages: long
+        	totalElements: long
+        }
   target:
-    kind: kapeta://kapeta/language-target-docker:0.1.0
+    kind: kapeta://kapeta/language-target-java-spring-boot:1.1.1
+    options:
+      basePackage: com.elgris.usersapi
+      groupId: com.elgris.usersapi
+      artifactId: usersapi
   configuration:
     types:
       - type: dto
