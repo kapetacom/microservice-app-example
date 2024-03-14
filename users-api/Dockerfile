@@ -1,14 +1,13 @@
-FROM openjdk:8-alpine
+FROM maven:3.9.4-eclipse-temurin-21-alpine AS build
+ADD pom.xml /application/pom.xml
+ADD src /application/src
+WORKDIR /application
+RUN mvn -B package
 
-EXPOSE 8083
-WORKDIR /usr/src/app
+FROM openjdk:21
+ADD kapeta.yml /application/kapeta.yml
+COPY --from=build  /application/target/*.jar /application/app.jar
+WORKDIR /application
+HEALTHCHECK --interval=5s --timeout=15s --start-period=5s --retries=10 CMD curl --fail http://localhost:80/.kapeta/health || exit 1
 
-
-COPY pom.xml mvnw ./
-COPY .mvn/ ./.mvn
-RUN ./mvnw dependency:resolve
-
-COPY . .
-RUN ./mvnw install
-
-CMD ["java", "-jar", "./target/users-api-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT [ "java", "-jar", "/application/app.jar" ]
