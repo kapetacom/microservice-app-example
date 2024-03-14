@@ -179,7 +179,7 @@ spec:
         	accessToken:string
         }
   target:
-    kind: kapeta://kapeta/language-target-go:0.1.2
+    kind: kapeta://kapeta/language-target-go:0.1.3
     options:
       basePackage: github.com/elgris/microservice-app-example/auth-api
   configuration:

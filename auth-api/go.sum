@@ -4,6 +4,10 @@ github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
 github.com/decred/dcrd/crypto/blake256 v1.0.1/go.mod h1:2OfgNZ5wDpcsFmHmCK5gZTPcCXqlm2ArzUIkw9czNJo=
 github.com/decred/dcrd/dcrec/secp256k1/v4 v4.2.0 h1:8UrgZ3GkP4i/CLijOJx79Yu+etlyjdBU4sfcs2WYQMs=
 github.com/decred/dcrd/dcrec/secp256k1/v4 v4.2.0/go.mod h1:v57UDF4pDQJcEfFUCRop3lJL149eHGSe9Jvczhzjo/0=
+github.com/ggicci/httpin v0.16.0 h1:ZR6RXH1xNWg39xqM33V7iz7PP/GuR7vc3aHa2g5mWo4=
+github.com/ggicci/httpin v0.16.0/go.mod h1:whE/5nx1jCp//UQ6rgNpq2WNxOr9FV0OpxMnQQC0Xvs=
+github.com/ggicci/owl v0.7.0 h1:+AMlCR0AY7j72q7hjtN4pm8VJiikwpROtMgvPnXtuik=
+github.com/ggicci/owl v0.7.0/go.mod h1:TRPWshRwYej6uES//YW5aNgLB370URwyta1Ytfs7KXs=
 github.com/goccy/go-json v0.10.2 h1:CrxCmQqYDkv1z7lO7Wbh2HN93uovUHgrECaO5ZrCXAU=
 github.com/goccy/go-json v0.10.2/go.mod h1:6MelG93GURQebXPDq3khkgXZkazVtN9CRI+MGFi0w8I=
 github.com/golang-jwt/jwt v3.2.2+incompatible h1:IfV12K8xAKAnZqdXVzCZ+TOjboZ2keLg81eXfW3O+oY=
@@ -20,6 +24,8 @@ github.com/kapetacom/sdk-go-rest-client v0.0.2 h1:YPRYHn1e6iqIQCENvr0Hw3fWbZkS9q
 github.com/kapetacom/sdk-go-rest-client v0.0.2/go.mod h1:Wo2diUeIjcaIkikD7kv3CCVLxSf59cowQxvoOmnMK9g=
 github.com/kapetacom/sdk-go-rest-server v0.1.3 h1:hGvz9zI6HF9wx4PbJRzA6t1+Rf4R16rVlAvCpQ0B03Y=
 github.com/kapetacom/sdk-go-rest-server v0.1.3/go.mod h1:KTgGHcIGq144Jry9CuCcnKZQEXpCO28ognCd9GRIy+w=
+github.com/kapetacom/sdk-go-rest-server v0.2.2 h1:hREqQvti4Q4kIRZbWDzRgfnU8JA9Gxczva1/U+dh7eo=
+github.com/kapetacom/sdk-go-rest-server v0.2.2/go.mod h1:ybGdfI+QbV2erx7+CU/ZTDAoTjCnOolgJom7dY3fdhs=
 github.com/labstack/echo-jwt/v4 v4.2.0 h1:odSISV9JgcSCuhgQSV/6Io3i7nUmfM/QkBeR5GVJj5c=
 github.com/labstack/echo-jwt/v4 v4.2.0/go.mod h1:MA2RqdXdEn4/uEglx0HcUOgQSyBaTh5JcaHIan3biwU=
 github.com/labstack/echo/v4 v4.11.4 h1:vDZmA+qNeh1pd/cCkEicDMrjtrnMGQ1QFI9gWN1zGq8=

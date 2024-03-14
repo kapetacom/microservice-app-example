@@ -109,7 +109,7 @@ spec:
             lastInsertedID:integer
         }
   target:
-    kind: kapeta://kapeta/language-target-nodejs:3.3.0
+    kind: kapeta://kapeta/language-target-nodejs:3.3.1
   configuration:
     types:
       - type: dto
