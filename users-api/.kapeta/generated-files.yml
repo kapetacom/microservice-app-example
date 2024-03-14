@@ -5,12 +5,6 @@
 
 version: 1.0.0
 assets:
-  - filename: src/generated/java/com/elgris/usersapi/config/JWTConfig.java
-    mode: write-always
-    checksum: 61fb1a39ad5e760b640cd636e291df383202f326
-    permissions: "644"
-    modified: 1710351378688
-    merged: false
   - filename: Dockerfile
     mode: create-only
     checksum: 20d8a439b472e0d022e54408fdc823b054447c01
@@ -21,7 +15,7 @@ assets:
     mode: write-always
     checksum: d967436c4b6cddbe4d4c3253658a7d4d0c7d4300
     permissions: "644"
-    modified: 1710351378689
+    modified: 1710413669003
     merged: false
   - filename: README.md
     mode: create-only
@@ -33,7 +27,7 @@ assets:
     mode: write-always
     checksum: 5bdbaa1bfa88fc32e73000aa50ec337e4587656c
     permissions: "644"
-    modified: 1710351378689
+    modified: 1710413669003
     merged: false
   - filename: src/main/resources/application.yml
     mode: create-only
@@ -45,115 +39,115 @@ assets:
     mode: write-always
     checksum: a600c831308e7720e56b2c7c00927af1f23d75e5
     permissions: "755"
-    modified: 1710351378689
+    modified: 1710413669004
     merged: false
   - filename: .devcontainer/devcontainer.json
     mode: merge
     checksum: 61c6e4ad94b31d6d14a60a0f59b565d436ca140c
     permissions: "644"
-    modified: 1710351378690
+    modified: 1710413669004
     merged: false
   - filename: scripts/docker-build.sh
     mode: write-always
     checksum: 4d1b43129a7ea2f72095d8b903aeeb0e10f04ca5
     permissions: "755"
-    modified: 1710351378690
+    modified: 1710413669005
     merged: false
   - filename: src/generated/java/com/elgris/usersapi/dto/UserRole.java
     mode: write-always
     checksum: bc9eb67759eded4f37f7d0a9c0ba5b544469d682
     permissions: "644"
-    modified: 1710351378690
+    modified: 1710413669005
     merged: false
   - filename: src/generated/java/com/elgris/usersapi/dto/UserBase.java
     mode: write-always
     checksum: 09a6f42453669358043236f99a4e171ff024ed36
     permissions: "644"
-    modified: 1710351378690
+    modified: 1710413669005
     merged: false
   - filename: src/main/java/com/elgris/usersapi/dto/UserDTO.java
     mode: create-only
     checksum: 1c49a89d6c0148fd25689e80484b18e0d959b143
     permissions: "644"
-    modified: 1710351378690
+    modified: 1710413669006
     merged: false
   - filename: src/generated/java/com/elgris/usersapi/dto/LoginRequestBase.java
     mode: write-always
     checksum: 5ad5bfdbfbaa60c232b78f61e343d649d7658020
     permissions: "644"
-    modified: 1710351378691
+    modified: 1710413669006
     merged: false
   - filename: src/main/java/com/elgris/usersapi/dto/LoginRequestDTO.java
     mode: create-only
     checksum: f55022c9e6714f416f5f83524491e11e491aef8f
     permissions: "644"
-    modified: 1710351378691
+    modified: 1710413669006
     merged: false
   - filename: src/generated/java/com/elgris/usersapi/dto/LoginResponseBase.java
     mode: write-always
     checksum: b557c114248324c4bb778f12d093958199ad92ad
     permissions: "644"
-    modified: 1710351378691
+    modified: 1710413669006
     merged: false
   - filename: src/main/java/com/elgris/usersapi/dto/LoginResponseDTO.java
     mode: create-only
     checksum: 69c1e080603540e6855b6ca55515f91dfd90d3f6
     permissions: "644"
-    modified: 1710351378691
+    modified: 1710413669007
     merged: false
   - filename: kapeta.md
     mode: write-always
     checksum: 10ba4b4b44e06f6bf2c95bc577e5fed380c9f359
     permissions: "644"
-    modified: 1710351378691
+    modified: 1710413669007
     merged: false
   - filename: pom.xml
     mode: merge
     checksum: 60c97a06fd9d880df15d35ac5e9051d8f30c3823
     permissions: "644"
-    modified: 1710351378694
+    modified: 1710413669014
     merged: true
   - filename: scripts/start-dev.cmd
     mode: write-always
     checksum: 5d005bd88c946839b56cfb37290960d98f7b623d
     permissions: "644"
-    modified: 1710351378694
+    modified: 1710413669014
     merged: false
   - filename: scripts/start-dev.sh
     mode: write-always
     checksum: 9220b74c188d8819965b3a39bed594a7f8d458d7
     permissions: "755"
-    modified: 1710351378694
+    modified: 1710413669015
     merged: false
   - filename: scripts/start-prod.cmd
     mode: write-always
     checksum: 5d005bd88c946839b56cfb37290960d98f7b623d
     permissions: "644"
-    modified: 1710351378694
+    modified: 1710413669015
     merged: false
   - filename: scripts/start-prod.sh
     mode: write-always
     checksum: 9220b74c188d8819965b3a39bed594a7f8d458d7
     permissions: "755"
-    modified: 1710351378694
+    modified: 1710413669016
     merged: false
   - filename: scripts/test.sh
     mode: write-always
     checksum: a730f332f4f735d51fd9d0ee79c1135b8aa18d95
     permissions: "755"
-    modified: 1710351378695
+    modified: 1710413669016
     merged: false
   - filename: src/generated/java/com/elgris/usersapi/rest/UsersUsersController.java
     mode: write-always
     checksum: 15bf7c88c47337d19402e016eb4f02c4f7a07493
     permissions: "644"
-    modified: 1710351378695
+    modified: 1710413669016
     merged: false
   - filename: src/generated/java/com/elgris/usersapi/service/IUsersUsersService.java
     mode: create-only
     checksum: 9aac5c2a3fb79208af44eee51d6c89eaf3663d3e
     permissions: "644"
-    modified: 1710351378695
+    modified: 1710413669017
     merged: false
   - filename: src/main/java/com/elgris/usersapi/service/UsersUsersService.java
     mode: create-only

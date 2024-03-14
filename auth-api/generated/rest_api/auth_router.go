@@ -1,4 +1,6 @@
+//
 // GENERATED SOURCE - DO NOT EDIT
+//
 package rest
 
 import (
@@ -28,7 +30,7 @@ func CreateAuthRouter(e *server.KapetaServer, cfg providers.ConfigProvider) erro
 		e.POST("/login", func(ctx echo.Context) error {
 			var err error
 
-			payload := &entities.LoginRequest{}
+			var payload *entities.LoginRequest
 			if err = request.GetBody(ctx, payload); err != nil {
 				return ctx.String(400, fmt.Sprintf("bad request, unable to unmarshal payload %v", err))
 			}

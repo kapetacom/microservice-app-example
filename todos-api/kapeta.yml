@@ -113,14 +113,6 @@ spec:
   configuration:
     types:
       - type: dto
-        name: JWT
-        properties:
-          secret:
-            type: string
-            secret: true
-            required: true
-            global: false
-      - type: dto
         name: LogQueue
         properties:
           channel:
@@ -133,11 +125,6 @@ spec:
       type: kaplang
       version: 1.11.3
       value: |-
-        type JWT {
-            @secret
-            secret:string
-        }
-
         type LogQueue {
             channel:string = 'log_channel'
         }

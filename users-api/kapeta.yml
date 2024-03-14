@@ -290,20 +290,8 @@ spec:
       groupId: com.elgris.usersapi
       artifactId: usersapi
   configuration:
-    types:
-      - type: dto
-        name: JWT
-        properties:
-          secret:
-            type: string
-            secret: true
-            required: true
-            global: false
+    types: []
     source:
       type: kaplang
-      version: 1.11.2
-      value: |-
-        JWT {
-            @secret
-            secret:string
-        }
+      version: 1.11.3
+      value: ""

@@ -9,7 +9,7 @@ assets:
     mode: merge
     checksum: 07e6c207d7b6daefd5c9a64d1b3c857296d00e79
     permissions: "644"
-    modified: 1710353729497
+    modified: 1710413663207
     merged: false
   - filename: Dockerfile
     mode: create-only
@@ -27,43 +27,37 @@ assets:
     mode: write-always
     checksum: 37ea620a50d633af219c9fcc69283d8b85cfcf57
     permissions: "644"
-    modified: 1710353729498
-    merged: false
-  - filename: generated/config/JWTConfig.go
-    mode: write-always
-    checksum: d6fd57b2b38014ec585e54671612a09278943a8e
-    permissions: "644"
-    modified: 1710353729499
+    modified: 1710413663208
     merged: false
   - filename: .devcontainer/devcontainer.json
     mode: merge
     checksum: 88fbb8b9349574af996ca1cdb5ad7be83d34a145
     permissions: "644"
-    modified: 1710353729500
+    modified: 1710413663209
     merged: false
   - filename: generated/entities/UserRole.go
     mode: write-always
     checksum: 592e2b0410fdbcfd5e5dadc0b6a84a6a60c6cb4a
     permissions: "644"
-    modified: 1710353729500
+    modified: 1710413663209
     merged: false
   - filename: generated/entities/User.go
     mode: write-always
     checksum: 8071aef3aa490ecd9e4db09fb0f80c67351ccc17
     permissions: "644"
-    modified: 1710353729501
+    modified: 1710413663209
     merged: false
   - filename: generated/entities/LoginRequest.go
     mode: write-always
     checksum: 0b434939c799ac94ff7009edbcfc24fad97c2eda
     permissions: "644"
-    modified: 1710353729502
+    modified: 1710413663210
     merged: false
   - filename: generated/entities/LoginResponse.go
     mode: write-always
     checksum: bbd77ca1d10355f50d7cdef3f6ff4e9d7abed95f
     permissions: "644"
-    modified: 1710353729502
+    modified: 1710413663210
     merged: false
   - filename: .gitignore
     mode: create-only
@@ -81,55 +75,55 @@ assets:
     mode: write-always
     checksum: f59a7ecf6bb5d4ddf8cfb418a37a255673a91481
     permissions: "644"
-    modified: 1710353729503
+    modified: 1710413663210
     merged: false
   - filename: main.go
     mode: create-only
     checksum: d650de2aa06287a57ba16c59d38f5ab539e3fd65
     permissions: "644"
-    modified: 1710353729503
+    modified: 1710413663211
     merged: false
   - filename: generated/router.go
     mode: write-always
     checksum: 8de5c56b45d37ab611106a500b511e18fa5cf3a0
     permissions: "644"
-    modified: 1710353729503
+    modified: 1710413663211
     merged: false
   - filename: scripts/start-dev.cmd
     mode: write-always
     checksum: 8cf729d2175daf5c4d675f17a165f4778fce9e4c
     permissions: "644"
-    modified: 1710353729504
+    modified: 1710413663211
     merged: false
   - filename: scripts/start-dev.sh
     mode: write-always
     checksum: 38c9baf7f23f6dc1341808804a8a2fbe156ccab1
     permissions: "755"
-    modified: 1710353729504
+    modified: 1710413663212
     merged: false
   - filename: scripts/start-prod.cmd
     mode: write-always
     checksum: d0a9e376c54b197e4e5e7c532916057559bf6e3b
     permissions: "644"
-    modified: 1710353729505
+    modified: 1710413663212
     merged: false
   - filename: scripts/start-prod.sh
     mode: write-always
     checksum: 3bf05d6e4e69e573169b607035b9a942e6b96693
     permissions: "755"
-    modified: 1710353729505
+    modified: 1710413663212
     merged: false
   - filename: generated/clients/UsersClient.go
     mode: write-always
     checksum: 90b53bc67ac9573e8b9c47ae0a66d2865f3b5367
     permissions: "644"
-    modified: 1710353729505
+    modified: 1710413663212
     merged: false
   - filename: generated/rest_api/auth_router.go
     mode: write-always
     checksum: 03055bafe1632cacb2754a234146aaa848504a78
     permissions: "644"
-    modified: 1710353729506
+    modified: 1710413663212
     merged: false
   - filename: pkg/services/auth_handler.go
     mode: create-only
@@ -141,5 +135,5 @@ assets:
     mode: write-always
     checksum: 6c80686d97884e722a58219acb0bf0b6c75feab5
     permissions: "644"
-    modified: 1710353729506
+    modified: 1710413663213
     merged: false
