@@ -5,7 +5,7 @@ metadata:
   description: ""
 spec:
   consumers:
-    - kind: kapeta/resource-type-redis:0.0.1
+    - kind: kapeta://kapeta/resource-type-redis:0.0.2
       metadata:
         name: tasks
       spec:
