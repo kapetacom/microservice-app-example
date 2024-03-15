@@ -4,7 +4,7 @@ metadata:
   visibility: private
   description: See https://github.com/elgris/microservice-app-example for more information
   structure: mono
-  title: Microservice Example by Elgris
+  title: Microservice Enhance
 spec:
   blocks:
     - name: users-api
@@ -147,3 +147,4 @@ spec:
         delete:
           targetId: delete
           type: EXACT
+  configuration: {}
