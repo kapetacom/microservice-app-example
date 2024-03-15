@@ -1,16 +1,16 @@
 kind: core/plan
 metadata:
-  name: kapeta/microservice-app-example
+  name: kapeta/microservice-app-example-import
   visibility: private
   description: See https://github.com/elgris/microservice-app-example for more information
   structure: mono
-  title: Microservice Example by Elgris
+  title: Microservice Import
 spec:
   blocks:
     - name: users-api
       id: 4a4d611a-9e24-406a-99e3-02d80bd3c5ce
       block:
-        ref: kapeta://kapeta/ms-app-example-users-api:local
+        ref: kapeta://kapeta/ms-app-import-example-users-api:local
       dimensions:
         top: 217.32601791147545
         left: 302.1440114151335
@@ -19,7 +19,7 @@ spec:
     - name: todos-api
       id: d8cfb135-3d3c-4f24-8e3a-4e039fe8d003
       block:
-        ref: kapeta://kapeta/ms-app-example-todos-api:local
+        ref: kapeta://kapeta/ms-app-import-example-todos-api:local
       dimensions:
         top: 297.88176375604246
         left: 701.5282131612403
@@ -28,7 +28,7 @@ spec:
     - name: log-processor
       id: 30145d32-5019-4a2b-8ac5-784008905032
       block:
-        ref: kapeta://kapeta/ms-app-example-log-message-processor:local
+        ref: kapeta://kapeta/ms-app-import-example-log-message-processor:local
       dimensions:
         top: 503.6205002440396
         left: 706.6610171527492
@@ -37,7 +37,7 @@ spec:
     - name: auth-api
       id: b1c3e887-697d-49c3-b2f7-c4a5d74fee0b
       block:
-        ref: kapeta://kapeta/ms-app-example-auth-api:local
+        ref: kapeta://kapeta/ms-app-import-example-auth-api:local
       dimensions:
         top: 88.61645550617406
         left: 607.9061598128837
@@ -46,14 +46,14 @@ spec:
     - name: Frontend
       id: 06616ef0-1c50-425d-8f97-42b08de9fe03
       block:
-        ref: kapeta://kapeta/ms-app-example-frontend:local
+        ref: kapeta://kapeta/ms-app-import-example-frontend:local
       dimensions:
         top: 185.8516805176869
         left: 1149.378527890506
         width: 0
         height: 0
     - block:
-        ref: kapeta://kapeta/ms-app-example-gw:local
+        ref: kapeta://kapeta/ms-app-import-example-gw:local
       dimensions:
         height: -1
         width: 150
@@ -101,3 +101,4 @@ spec:
       port:
         name: http
         type: web
+  configuration: {}

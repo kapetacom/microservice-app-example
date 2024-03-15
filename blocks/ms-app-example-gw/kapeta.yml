@@ -1,6 +1,6 @@
 kind: kapeta://kapeta/block-type-gateway-http:2.1.0
 metadata:
-  name: kapeta/ms-app-example-gw
+  name: kapeta/ms-app-import-example-gw
   visibility: private
   title: Microservice Example Gateway
 spec:

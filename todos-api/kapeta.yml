@@ -1,6 +1,6 @@
 kind: kapeta://kapeta/block-type-service:1.3.6
 metadata:
-  name: kapeta/ms-app-example-todos-api
+  name: kapeta/ms-app-import-example-todos-api
   visibility: private
   description: ""
 spec:
